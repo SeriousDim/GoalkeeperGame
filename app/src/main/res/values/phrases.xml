@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="goal">
+        <item>О, нет!</item>
+        <item>Надо было прыгать с другую сторону!</item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
+
+    <string-array name="rod">
+        <item>Фиг. Штанга!</item>
+        <item>Почти не считается.</item>
+        <item>Не зря придумали штангу!</item>
+    </string-array>
+
+    <string-array name="miss">
+        <item>Да! Мне повезло.</item>
+        <item>Так держать! (Сарказм)</item>
+        <item>Вот бы все вы так пинали!</item>
+        <item>Ты пинаешь, как тот аптекарь...</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="prevent">
+        <item>Да! Так тебе и надо!</item>
+        <item>Это было просто.</item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
+
+</resources>

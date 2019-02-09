@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Goalkeeper</string>
+    <string name="play">Играть с Окенфеевым</string>
+    <string name="goals">Голов:&#160;</string>
+    <string name="points">Очки:&#160;</string>
+    <string name="round">РАНУД&#160;</string>
+
+    <string name="alert">ГООООЛ!</string>
+    <string name="alert2">Промах!</string>
+    <string name="alert3">Не долетел!</string>
+    <string name="alert4">Мяч отбит!</string>
+    <string name="alert5">КОНЕЦ ИГРЫ</string>
+    <string name="alert6">Штанга!</string>
+</resources>
