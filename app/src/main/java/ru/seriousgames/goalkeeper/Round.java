@@ -9,7 +9,7 @@ package ru.seriousgames.goalkeeper;
 
 public class Round {
 
-    final int FIRST_R_TIME = 60000;
+    final int FIRST_R_TIME = 60000; //60000
     final int PLUS_TIME = 30000;
     final int FIRST_R_GOALS = 5;
     final int PLUS_GOALS = 5;

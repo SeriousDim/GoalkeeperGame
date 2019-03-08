@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     MySurfaceView sv;
     static Handler h;
+    static EndGameTask task;
     Group cl;
     TextView pointsView, goalsView, roundView, timeView, alert;
 
@@ -90,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
                             case 6: // конец игры
                                 alert.setTextColor(getResources().getColor(R.color.red));
                                 alert.setText(getResources().getString(R.string.alert5));
-                                new EndGameTask().execute();
+                                task = new EndGameTask();
+                                task.execute();
                                 break;
                             case 7: //штанга
                                 alert.setTextColor(getResources().getColor(R.color.red));
@@ -102,13 +104,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        sv = new MySurfaceView(this);
-        sv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sv.thread.control();
-            }
-        });
 
         setContentView(R.layout.activity_main);
     }
@@ -124,16 +119,26 @@ public class MainActivity extends AppCompatActivity {
         cl = (Group)findViewById(R.id.gamepanel);
         cl.setVisibility(View.VISIBLE);
         RelativeLayout rl = (RelativeLayout)findViewById(R.id.rel);
+
+        sv = new MySurfaceView(this);
         sv.thread = new GameThread(sv.getHolder(), this,  sv.graphics, rl.getWidth(), rl.getHeight());
+        sv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sv.thread.control();
+            }
+        });
         rl.addView(sv);
     }
 
     public final void endGame(){
         sv.thread.interrupt();
-        try {
-            sv.thread.join();
-        } catch(Exception e){
-            e.printStackTrace();
+        boolean retry = true;
+        while (retry) {
+            try {
+                sv.thread.join();
+                retry = false;
+            } catch (InterruptedException e) {}
         }
         RelativeLayout rl = (RelativeLayout)findViewById(R.id.rel);
         rl.removeAllViews();
@@ -175,12 +180,14 @@ public class MainActivity extends AppCompatActivity {
     class EndGameTask extends AsyncTask<Void, Void, Void>{
         @Override
         protected Void doInBackground(Void... v){
-            try {
-                TimeUnit.SECONDS.sleep(3);
+            long left = 0;
+            long now = System.currentTimeMillis();
+            while (left < 3000){
+                long elapsed = System.currentTimeMillis();
+                left += elapsed - now;
+                now = elapsed;
             }
-            catch(Exception e){
-                e.printStackTrace();
-            }
+
             return null;
         }
 

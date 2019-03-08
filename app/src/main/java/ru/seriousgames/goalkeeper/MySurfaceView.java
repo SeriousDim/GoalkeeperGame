@@ -44,14 +44,7 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        /*boolean retry = true;
-        thread.interrupt();
-        while (retry){
-            try{
-                thread.join();
-                retry = false;
-            } catch(InterruptedException e){}
-        }*/
+
     }
 
 }

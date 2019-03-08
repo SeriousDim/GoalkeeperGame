@@ -29,7 +29,7 @@ public class GameThread extends Thread {
     Values vals;
     long time;                          // хранит время начала кадра
     int showTextTimer;                  // хранит оставшееся время до окончания показа текста по центру
-    boolean showText;                   // нужно ли сейчас показывать текст по центру
+    boolean showText, finished;                   // нужно ли сейчас показывать текст по центру
     final int width, height;            // хранят ширину и высоту экрана
     // TODO: убрать, когда придет время
     //final float x, y;                 // ВОЗМОЖНО, БЕСПОЛЕЗЫНЫЕ ПЕРЕМЕННЫЕ: по умолчанию = 0
@@ -55,6 +55,7 @@ public class GameThread extends Thread {
         step1 = true;
         step2 = false;
         ballMove = false;
+        finished = false;
         controlLock = true;
         //this.h = h;
         this.activity = activity;
@@ -204,8 +205,10 @@ public class GameThread extends Thread {
         {
             this.step1 = false;
             this.step2 = false;
+            this.finished = true;
+            this.controlLock = false;
             //this.ballMove = false;
-            sendTextMessage(6, 0, 5000);
+            sendTextMessage(6, 0, 3000);
         }
         else                                    // иначе вычесть время
         {
@@ -252,7 +255,7 @@ public class GameThread extends Thread {
         // пока мяч и вратарь не пройдут нужное растояние (и скорость и не станет 0)
         if (!controlLock &&
                 ball.speed == 0 &&
-                goal.distance == 0)
+                goal.distance == 0 && !this.finished)
         {
             // TODO: не правильно работает определние недолета, перелета и штанги
             if (!storage.gates.isGoal)      // если гол не забит
@@ -325,7 +328,7 @@ public class GameThread extends Thread {
                 ball.speed = 0;
 
             // столкновения с границами экрана и воротами
-            if (storage.gates.collide(ball, shiftX, shiftY, graphics.mRotate))    // если мяч задел ворота изнутри
+            if (storage.gates.collide(ball, shiftX, shiftY, graphics.mRotate) && !this.finished)    // если мяч задел ворота изнутри
             {
                 this.goals++;           // ГООООЛ!
                 sendMessage(2);
@@ -419,8 +422,10 @@ public class GameThread extends Thread {
         }
 
         // проверяем параметры рануда и обновляем время
-        checkRoundParams(time);
-        sendMessage(4);
+        if (!this.finished) {
+            checkRoundParams(time);
+            sendMessage(4);
+        }
     }
 
     /*
