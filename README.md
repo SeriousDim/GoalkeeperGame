@@ -4,6 +4,6 @@
 
 Текущая версия: **v. 0.1 MVP (В РАЗРАБОТКЕ)**
 
-Написано с помощью **Android Api и Android Studio**
+Написано с помощью **Android API и Android Studio**
 
 Текстуры и спрайты: [Kenney.nl](https://kenney.nl/)
