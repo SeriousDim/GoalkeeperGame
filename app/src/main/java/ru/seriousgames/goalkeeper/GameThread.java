@@ -125,6 +125,20 @@ public class GameThread extends Thread {
     }
     // ### КОНЕЦ счетчика FPS ###
 
+    /*  возращает число полученных очков в этой сессии
+     *  вызывается из активити, перед завершением потока
+     */
+    public int getPoints(){
+        return this.points;
+    }
+
+    /*  возращает номер раунда в этой сессии
+     *  вызывается из активити, перед завершением потока
+     */
+    public int getRound(){
+        return this.round.num;
+    }
+
     /*  устанавливает скорость мяча в зависимости от заданной "силы"
      *  скорость = (координата Х стрелки "силы" - мин. возможная коорд. стрелки "силы") / длина шкалы "силы" * коэф. увеличения скорости
      */
@@ -262,12 +276,12 @@ public class GameThread extends Thread {
             {
                 if (goal.reflected)         // если мяч был отражен
                 {
-                    this.points -= 100;
+                    this.points -= 150;
                     sendTextMessage(5, -100, 2000);
                 }
                 else if (storage.gates.isRod)   // если штанга
                 {
-                    this.points -= 150;
+                    this.points -= 100;
                     sendTextMessage(7, -150, 2000);
                 }
                 else
@@ -281,7 +295,7 @@ public class GameThread extends Thread {
                     // TODO: увеличитить вычитающиеся очки при недолете
                     else        // иначе - недолет
                     {
-                        this.points -= 200;
+                        this.points -= 250;
                         sendTextMessage(3, -200, 2000);
                     }
                 }
@@ -332,8 +346,8 @@ public class GameThread extends Thread {
             {
                 this.goals++;           // ГООООЛ!
                 sendMessage(2);
-                sendTextMessage(2, 250, 2000);
-                this.points += 250;     // засчитываем очки
+                sendTextMessage(2, 200, 2000);
+                this.points += 200;     // засчитываем очки
                 sendMessage(3);
                 this.totalGoals++;      // прибавляем всего голов
             }

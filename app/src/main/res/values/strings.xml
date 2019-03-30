@@ -1,9 +1,34 @@
 <resources>
     <string name="app_name">Goalkeeper</string>
-    <string name="play">Играть с Окенфеевым</string>
+    <string name="play">Играть с Окинфеевым</string>
     <string name="goals">Голов:&#160;</string>
     <string name="points">Очки:&#160;</string>
     <string name="round">РАУНД&#160;</string>
+    
+    <string name="new_record_alert">НОВЫЙ РЕКОРД!&#160;</string>
+    <string name="n_round">Вы дошли до %d раунда!</string>
+    <string name="n_points">%d очков!</string>
+    <string name="get_money">Вы получили $%d</string>
+    <string name="no_money">Вы не получаете деньги за последнюю игру!</string>
+
+    <string name="round_record">Достигнутый раунд:</string>
+    <string name="points_record">Макс. число очков:</string>
+    
+    <string name="shop">Магазин</string>
+    <string name="stats">Статистика</string>
+    <string name="about">Об игре</string>
+    <string name="next_version">В следующих версиях</string>
+    
+    <string name="idea">Идея</string>
+    <string name="programmer">Программист\nГеймдизайнер</string>
+    <string name="sprites">Спрайты для игры</string>
+
+    <string name="me"><a href="https://vk.com/dimaslykov/">Дмитрий Лыков</a></string>
+    <string name="dad">Вадим Лыков</string>
+    <string name="both">Вадим Лыков\nДмитрий Лыков</string>
+    <string name="kenney">Kenney.nl</string>
+    <string name="kenney_link"><a href="https://kenney.nl/">Kenney.nl</a></string>
+    <string name="version">v. 0.1</string>
 
     <string name="alert">ГООООЛ!</string>
     <string name="alert2">Промах!</string>
