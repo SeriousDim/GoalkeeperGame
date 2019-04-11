@@ -380,7 +380,7 @@ public class GameThread extends Thread {
             // перемещаем мяч и запоминаем координаты
 
             // TODO: нормальная штанга
-            storage.gates.rodCollide(ball, shiftX, shiftY, graphics.mRotate);     // проверяем штангу
+            //storage.gates.rodCollide(ball, shiftX, shiftY, graphics.mRotate);     // проверяем штангу
 
             graphics.mRotate.postRotate(ball.speed * 1.2f * time, ball.x, ball.y);  // вращаем мяч вокруг своей оси: скорость вращения зависит от скорости мяча
 
@@ -474,13 +474,13 @@ public class GameThread extends Thread {
 
             // рисует хит-бокс ворот
             /*cnv.drawRect(storage.gates.real[0], storage.gates.real[1],
-                    storage.gates.real[2], storage.gates.real[3], graphics.hitboxShow);*/
+                    storage.gates.real[2], storage.gates.real[3], graphics.hitboxShow);
 
             // рисеут центр мяча
-            //cnv.drawCircle(storage.ball.x, storage.ball.y, 2f, graphics.pointShow);
+            cnv.drawCircle(storage.ball.x, storage.ball.y, 2f, graphics.pointShow);
 
             // рисует хит-бокс вратаря
-            /*cnv.drawRect(storage.goalkepper.c[0], storage.goalkepper.c[1],
+            cnv.drawRect(storage.goalkepper.c[0], storage.goalkepper.c[1],
                     storage.goalkepper.c[2], storage.goalkepper.c[3], graphics.hitboxShow);*/
             // ### КОНЕЦ КОДА для отладки ###
         }

@@ -33,12 +33,12 @@ public class Graphics {
         hitboxShow.setARGB(100, 0, 0, 255);
         hitboxShow.setStrokeWidth(3f);
 
-        this.field = BitmapFactory.decodeResource(res, R.drawable.n_football);
+        this.field = BitmapFactory.decodeResource(res, R.drawable.new_field_20x9);
         this.forceBar = BitmapFactory.decodeResource(res, R.drawable.force_bar);
         this.ball = BitmapFactory.decodeResource(res, R.drawable.ball);
         this.gates = BitmapFactory.decodeResource(res, R.drawable.n_gates);
         this.arrow = BitmapFactory.decodeResource(res, R.drawable.arrow);
-        this.forceArrow = BitmapFactory.decodeResource(res, R.drawable.force_arrow);
+        this.forceArrow = BitmapFactory.decodeResource(res, R.drawable.new_arrow);
         this.player1 = BitmapFactory.decodeResource(res, R.drawable.player_1);
         this.FIELD_WIDTH = this.field.getWidth();
 
@@ -49,7 +49,7 @@ public class Graphics {
         this.mPlayer1 = new Matrix();
     }
 
-    //TODO: REWRITE using BitmpaFactory and SimpleSize variable
+    //TODO: REWRITE using BitmapFactory and SimpleSize variable
     public final void setGraphicalParams(float f, float width, float height){
         this.m.setScale(f,f,0,0);
         this.ff = f;
@@ -98,11 +98,11 @@ public class Graphics {
                 this.m, false
         );
 
-        this.mRotate.preTranslate(width*0.5f-(this.ball.getWidth()*0.5f), this.field.getHeight()*0.46875f-(this.ball.getWidth()*0.5f));
-        this.mArrow.preTranslate(width*0.5f - this.arrow.getWidth()*0.5f, this.field.getHeight()*0.2f);
-        this.mArrow.postRotate(-40f, width*0.5f, this.field.getHeight()*0.46875f);
+        this.mRotate.preTranslate(width*0.5f-(this.ball.getWidth()*0.5f), this.field.getHeight()*0.375f-(this.ball.getWidth()*0.5f));
+        this.mArrow.preTranslate(width*0.5f - this.arrow.getWidth()*0.5f, this.field.getHeight()*0.15625f);
+        this.mArrow.postRotate(-40f, width*0.5f, this.field.getHeight()*0.375f);
         this.mForceArrow.preTranslate(width*0.151f,height*0.894f);
-        this.mPlayer1.preTranslate(width*0.5f-this.player1.getWidth()*0.5f, this.field.getHeight()*0.1875f);
+        this.mPlayer1.preTranslate(width*0.5f-this.player1.getWidth()*0.5f, this.field.getHeight()*0.15f);
     }
 
 }

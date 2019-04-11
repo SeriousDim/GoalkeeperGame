@@ -8,14 +8,12 @@ package ru.seriousgames.goalkeeper;
  *  принимает сообщения от DrawThread
  */
 
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.support.constraint.Group;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,11 +25,6 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.Executors;
 
 import ru.seriousgames.goalkeeper.database.AddMoneyTask;
 import ru.seriousgames.goalkeeper.database.CompareAndUpdateTask;
@@ -40,7 +33,6 @@ import ru.seriousgames.goalkeeper.database.Keys;
 import ru.seriousgames.goalkeeper.database.Record;
 import ru.seriousgames.goalkeeper.database.RecordDao;
 import ru.seriousgames.goalkeeper.database.TaskListener;
-import ru.seriousgames.goalkeeper.database.UpdateRecordTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     TextView lvl, money, header, roundRecord, pointsRecord;
     Button start;
     MutableLiveData<String> liveData;
+    String sigma;
     int opened;
 
     @Override
@@ -140,9 +133,19 @@ public class MainActivity extends AppCompatActivity {
         roundRecord = findViewById(R.id.round_view);
         pointsRecord = findViewById(R.id.points_view);
 
+        sigma = getResources().getString(R.string.sigma_coins);
+
+        /*TextView mainInfo = findViewById(R.id.head_info);
+        String text = getResources().getString(R.string.description);
+        mainInfo.setText(Html.fromHtml(text));*/
+
         ((TextView)findViewById(R.id.textView9)).setMovementMethod(LinkMovementMethod.getInstance());
         ((TextView)findViewById(R.id.textView10)).setMovementMethod(LinkMovementMethod.getInstance());
 
+        getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
+                WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED
+        );
 
         updateValues();
         /*liveData = ThisApp.getInstance().appLiveData;
@@ -157,23 +160,51 @@ public class MainActivity extends AppCompatActivity {
         );*/
     }
 
-    private void animateAppear(Group group){
-        group.animate().
-                alphaBy(0).
-                alpha(1).
-                setDuration(1000).
-                setInterpolator(new LinearInterpolator()).
-                start();
-    }
-    private void animateAppear(View view){
-        view.animate().
-                alphaBy(0).
-                alpha(1).
-                setDuration(1000).
-                setInterpolator(new LinearInterpolator()).
-                start();
+    private AnimatorSet animateWindowBackground(boolean appear){
+        ObjectAnimator backAnim, btnAnim, headerAnim;
+        int start, end;
+        if (appear){
+            start = 0;
+            end = 1;
+        } else {
+            start = 1;
+            end = 0;
+        }
+        backAnim = ObjectAnimator.ofFloat(findViewById(R.id.backgr), View.ALPHA, start, end);
+        btnAnim = ObjectAnimator.ofFloat(findViewById(R.id.closeBtn), View.ALPHA, start, end);
+        headerAnim = ObjectAnimator.ofFloat(header, View.ALPHA, start, end);
+        AnimatorSet set = new AnimatorSet();
+        set.setDuration(500);
+        set.playTogether(backAnim, btnAnim, headerAnim);
+        set.setInterpolator(new LinearInterpolator());
+        return set;
     }
 
+    private void animate(boolean appear){
+        AnimatorSet set = animateWindowBackground(appear);
+        ObjectAnimator anim = null;
+        int start, end;
+        if (appear){
+            start = 0;
+            end = 1;
+        } else {
+            start = 1;
+            end = 0;
+        }
+        switch(opened){
+            case 1:
+                anim = ObjectAnimator.ofFloat(findViewById(R.id.in_next), View.ALPHA, start, end);
+                break;
+            case 2:
+                anim = ObjectAnimator.ofFloat(stats, View.ALPHA, start, end);
+                break;
+            case 3:
+                anim = ObjectAnimator.ofFloat(findViewById(R.id.about), View.ALPHA, start, end);
+                break;
+        }
+        set.playTogether(anim);
+        set.start();
+    }
 
     private void setBackgroundVisibility(){
         backgr.setVisibility(
@@ -185,35 +216,7 @@ public class MainActivity extends AppCompatActivity {
         header.setText(getResources().getString(R.string.shop));
         shop.setVisibility(View.VISIBLE);
         opened = 1;
-        animateAppear(backgr);
-        animateAppear(shop);
-    }
-
-    public void openInfo(View view){
-        setBackgroundVisibility();
-        header.setText(getResources().getString(R.string.about));
-        info.setVisibility(View.VISIBLE);
-        opened = 3;
-        animateAppear(backgr);
-        animateAppear(info);
-    }
-
-    public void close(View view){
-        setBackgroundVisibility();
-        switch(opened){
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-            case 3:
-
-                break;
-        }
-        info.setVisibility(View.GONE);
-        shop.setVisibility(View.GONE);
-        stats.setVisibility(View.GONE);
+        animate(true);
     }
 
     public void openStatistics(final View view){
@@ -221,13 +224,28 @@ public class MainActivity extends AppCompatActivity {
         header.setText(getResources().getString(R.string.stats));
         opened = 2;
         stats.setVisibility(View.VISIBLE);
-        animateAppear(backgr);
-        animateAppear(stats);
+        animate(true);
+    }
+
+    public void openInfo(View view){
+        setBackgroundVisibility();
+        header.setText(getResources().getString(R.string.about));
+        info.setVisibility(View.VISIBLE);
+        opened = 3;
+        animate(true);
+    }
+
+    public void close(View view){
+        setBackgroundVisibility();
+        animate(false);
+        info.setVisibility(View.GONE);
+        shop.setVisibility(View.GONE);
+        stats.setVisibility(View.GONE);
     }
 
     public void setValues(int... arr){
         lvl.setText("LVL "+ arr[0]);
-        money.setText("$ "+ arr[1]);
+        money.setText(sigma+" "+ arr[1]);
         roundRecord.setText(arr[2]+"");
         pointsRecord.setText(arr[3]+"");
     }

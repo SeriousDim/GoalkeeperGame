@@ -2,8 +2,9 @@
 <resources>
     <color name="colorPrimary">#27BE61</color>
     <color name="colorPrimaryDark">#27ad61</color>
-    <color name="colorAccent">#3F51B5</color>
-    <color name="yellow">#F8C200</color> <!-- FFCB00 -->
+    <color name="colorAccent">#4862FF</color>
+    <color name="yellow">#FFCB00</color> <!-- FFCB00 -->
+    <color name="dark_yellow">#E7B400</color>
     <color name="red">#BF3030</color>
     <color name="green">#20894D</color>
 </resources>

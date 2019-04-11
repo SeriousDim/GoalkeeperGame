@@ -25,14 +25,14 @@ public class GatePlayer {
 
     public GatePlayer(float width, float height){
         WIDTH = width*0.1232f;
-        HEIGHT = height*0.023f;
+        HEIGHT = height*0.01875f;
         CENTER_X = width*0.429f;
-        CENTER_Y = height*0.1875f;
+        CENTER_Y = height*0.15f;
         this.x = CENTER_X;
         this.y = CENTER_Y;
         this.c = new float[4];
         WIDTH_MARGIN = width*0.0086f;
-        HEIGHT_MARGIN = height*0.0048f;
+        HEIGHT_MARGIN = height*0.0039f;
         this.c[0] = x + WIDTH_MARGIN;
         this.c[1] = y + HEIGHT_MARGIN;
         this.c[2] = c[0] + WIDTH;

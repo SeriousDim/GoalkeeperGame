@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Goalkeeper</string>
-    <string name="play">Играть с Окинфеевым</string>
+    <string name="app_name">Забей!</string>
+    <string name="play">Играть\nс Окинфеевым</string>
     <string name="goals">Голов:&#160;</string>
     <string name="points">Очки:&#160;</string>
     <string name="round">РАУНД&#160;</string>
@@ -8,7 +8,7 @@
     <string name="new_record_alert">НОВЫЙ РЕКОРД!&#160;</string>
     <string name="n_round">Вы дошли до %d раунда!</string>
     <string name="n_points">%d очков!</string>
-    <string name="get_money">Вы получили $%d</string>
+    <string name="get_money">Вы получили &#120680; %d</string>
     <string name="no_money">Вы не получаете деньги за последнюю игру!</string>
 
     <string name="round_record">Достигнутый раунд:</string>
@@ -23,12 +23,22 @@
     <string name="programmer">Программист\nГеймдизайнер</string>
     <string name="sprites">Спрайты для игры</string>
 
-    <string name="me"><a href="https://vk.com/dimaslykov/">Дмитрий Лыков</a></string>
+    <string name="me"><a href="https://vk.com/dimaslykov">Дмитрий Лыков</a></string>
     <string name="dad">Вадим Лыков</string>
     <string name="both">Вадим Лыков\nДмитрий Лыков</string>
     <string name="kenney">Kenney.nl</string>
     <string name="kenney_link"><a href="https://kenney.nl/">Kenney.nl</a></string>
     <string name="version">v. 0.1</string>
+    <string name="sigma_coins">&#120680;</string>
+    <string name="main_info">Grand Goalkeeper</string>
+    <string name="description">
+        <![CDATA[
+        Игра, в которой вам придется сыграть с самым метким и самым золотоногим вратарем - Игорьком Окинфеевым.<br/>
+        В игре имеется валюта - <span color=orange>сигма-коины</span>. Они отображаются в вверху. Вы их можете заработать в каждой игре.<br/>
+        <b>Это - бета-версия игры, игра активно разрабатывается.</b> Если вы хотите поддержать этот проект, вам всего лишь нужно
+        <span color=green>оценить</span> эту игру и <span color=green>оставить отзыв</span> и пожелания в Google Play.
+        ]]>
+    </string>
 
     <string name="alert">ГООООЛ!</string>
     <string name="alert2">Промах!</string>

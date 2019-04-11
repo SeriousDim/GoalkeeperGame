@@ -19,12 +19,12 @@ public class Gates {
 
     public Gates(float width, float height, float f) {
         this.x = width*0.222f;
-        this.y = height*0.055f;
+        this.y = height*0.04218f;
         this.real = new float[4];
         this.real[0] = this.x + width*0.055f;
-        this.real[1] = this.y + height*0.03125f;
+        this.real[1] = this.y + height*0.025f;
         this.real[2] = this.real[0] + width*0.44f;
-        this.real[3] = this.real[1] + height*0.09375f;
+        this.real[3] = this.real[1] + height*0.075f;
         this.rodWidth = width*0.0104f;
         this.isGoal = false;
         this.isRod = false;
