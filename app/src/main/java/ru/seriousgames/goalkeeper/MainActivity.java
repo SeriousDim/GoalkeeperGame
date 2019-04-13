@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         btnAnim = ObjectAnimator.ofFloat(findViewById(R.id.closeBtn), View.ALPHA, start, end);
         headerAnim = ObjectAnimator.ofFloat(header, View.ALPHA, start, end);
         AnimatorSet set = new AnimatorSet();
-        set.setDuration(500);
+        set.setDuration(200);
         set.playTogether(backAnim, btnAnim, headerAnim);
         set.setInterpolator(new LinearInterpolator());
         return set;

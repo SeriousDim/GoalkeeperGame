@@ -277,12 +277,12 @@ public class GameThread extends Thread {
                 if (goal.reflected)         // если мяч был отражен
                 {
                     this.points -= 150;
-                    sendTextMessage(5, -100, 2000);
+                    sendTextMessage(5, -150, 2000);
                 }
                 else if (storage.gates.isRod)   // если штанга
                 {
                     this.points -= 100;
-                    sendTextMessage(7, -150, 2000);
+                    sendTextMessage(7, -100, 2000);
                 }
                 else
                 {
@@ -296,7 +296,7 @@ public class GameThread extends Thread {
                     else        // иначе - недолет
                     {
                         this.points -= 250;
-                        sendTextMessage(3, -200, 2000);
+                        sendTextMessage(3, -250, 2000);
                     }
                 }
                 sendMessage(3);     // обновить очки

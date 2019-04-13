@@ -101,7 +101,7 @@ public class Graphics {
         this.mRotate.preTranslate(width*0.5f-(this.ball.getWidth()*0.5f), this.field.getHeight()*0.375f-(this.ball.getWidth()*0.5f));
         this.mArrow.preTranslate(width*0.5f - this.arrow.getWidth()*0.5f, this.field.getHeight()*0.15625f);
         this.mArrow.postRotate(-40f, width*0.5f, this.field.getHeight()*0.375f);
-        this.mForceArrow.preTranslate(width*0.151f,height*0.894f);
+        this.mForceArrow.preTranslate(width*0.151f,height*0.8993f);
         this.mPlayer1.preTranslate(width*0.5f-this.player1.getWidth()*0.5f, this.field.getHeight()*0.15f);
     }
 

@@ -29,12 +29,12 @@ public class Values {
         BALL_CENTER_Y = fHeight*0.375f;
         ROTATION_PER_MS = 0.12f; //настоящая величина = 0.12f и +0.025f каждый раунд
         FORCE_BAR_X = width*0.0972f;
-        FORCE_BAR_Y = height*0.854f;
-        FORCE_ARROW_Y = height*0.8992f;
+        FORCE_BAR_Y = height-332*ff;
+        FORCE_ARROW_Y = FORCE_BAR_Y+100*ff;
         FORCE_ARROW_END_X = width*0.8472f;
         FORCE_ARROW_SPEED = width*0.0022f; //0.002f
         FORCE_ARROW_START_X = width*0.151f;
-        BALL_MIN_SPEED = 0.2f;
+        BALL_MIN_SPEED = 0.1f;
         BALL_PLUS_SPEED = 0.7f; //0.6f
         PLAYER_1_SPEED = width*0.00022f;
     }
